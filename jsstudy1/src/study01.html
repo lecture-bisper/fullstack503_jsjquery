@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+  <script>
+    // 자바스크립트.
+  //   변수 : 데이터를 하나 저장할 수 있는 메모리 공간
+  //   기존 변수에 데이터를 다시 대입하면 기존 데이터는 삭제되고, 신규 데이터가 저장됨
+  //   키워드는 var 를 사용함
+  //   자바스크립트의 변수는 모든 데이터 타입을 저장할 수 있음
+  //   자바스크립트의 변수는 재선언이 가능함
+
+  //   사용법
+  //   var 변수명 = 데이터;
+  //   var 변수명;
+  //   변수명 = 데이터;
+
+    var a = 10; // 숫자 데이터 저장
+    console.log(a);
+    var b = "hello world"; // 문자열 데이터 저장
+    console.log(b);
+    var c = 100; // 숫자 데이터 저장
+    console.log(c);
+    c = "문자열"; // 같은 변수에 문자열 데이터 저장
+    console.log(c);
+    c = true; // 같은 변수에 논리형 데이터 저장
+    console.log(c);
+
+    var c = 10000; // 이미 사용하고 있는 변수를 재 선언하여 사용
+    console.log(c);
+
+
+
+  //   자바스크립트의 데이터 타입
+  //   자바스크립트는 간편하게 사용하기 위해서 개발된 언어이기 때문에 자바와 같이 여러가지의 데이터 타입을 제공하지 않음
+  //   숫자형(Number), 문자열형(String), 논리형(Boolean), 배열(Arrays), 객체(object), undefined(데이터 초기화 안함), null(데이터 비어있음)
+  //   추가로 Bigint, Symbol 이 존재
+
+  //   숫자형 (Number): 정수와 실수를 동시에 표현함, 지수 표현도 가능함
+  //   다른 기호 없이 숫자를 그대로 입력하여 사용
+  //   자바만큼 정확한 실수 표현은 할 수 없음(자바의 float 타입 만큼의 정확도)
+
+  //   사용법
+  //   var 변수명 = 1000;
+  //   var 변수명 = 10.05;
+  //   var 변수명 = 123e5;
+
+    console.log("\n----- 숫자형 -----\n")
+    var a = 10; // 정수 사용
+    console.log(a);
+    var b = 10.05; // 실수 사용
+    console.log(b);
+    var c = 123e5; // 지수표현법 사용
+    console.log(c);
+    c = 123e-5; // 지수표현법 사용
+    console.log(c);
+
+  //   문자열형 (String) : 자바스크립트에서 문자 혹은 문자열을 저장하기 위한 데이터 타입
+  //   자바스크립트는 문자 타입과 문자열 타입을 구분하지 않음
+  //   기호로 ' ', " " 를 사용함
+  //   ' ', " " 로 감싸여진 데이터는 모두 문자열
+  //   자바와 같이 이스케이프 문자를 사용할 수 있음
+
+  //   이스케이프 문자 : 문자열 안에서 '\' 함께 입력되어 특수한 기능을 하는 문자
+  //   \n : 줄바꿈 문자, 문자열 안에서 사용 시 문자열의 표현 위치를 한 라인 아래로 변경
+  //   \t : tab 문자, 문자열 안에서 사용 시 tab 키를 누른 것과 같은 효과
+  //   \' : ' 문자, 문자열 안에서 작은 따옴표를 표현하고자 할 경우 사용
+  //   \" : " 문자, 문자열 안에서 큰 따옴표를 표현하고자 할 경우 사용
+  //   \\ : \ 문자, 문자열 안에서 역슬레쉬를 표현하고자 할 경우 사용, \ 는 이스케이프 문자를 사용하기 위한 기호이지만 문자로써 \ 를 표현하고자 하면 \\ 를 사용
+
+  //   \b : 백스페이스 문자, 문자열 안에서 백스페이스바 키를 누른 효과
+  //   \f : 폼피드 문자, 현재 라인에서 첫번째 글 위치로 이동하는 문자
+  //   \r : 캐리지 리턴, 현재 위치의 바로 아래 줄로 이동하는 문자
+  //   \v : 버티컬 tab, tab 기능을 세로로 사용
+
+  //   사용법
+  //   var 변수명 = '데이터';
+  //   var 변수명 = "데이터";
+  //   var 변수명 = "10000";
+
+    var str = "큰 따옴표를 사용한 문자열";
+    console.log(str);
+    str = '작은 따옴표를 사용한 문자열';
+    console.log(str);
+    str = "큰 따옴표에서 문자로써의 '작은 따옴표'를 표시";
+    console.log(str);
+    str = '작은 따옴표로 감싸진 문자열에서 문자로써의 "큰 따옴표"를 표시';
+    console.log(str);
+    str = "이스케이프\t\t 문자를\n \'사용\'해서 \"문자열\"을 \\표현해 \\봅시다.";
+    console.log(str);
+
+
+    // 논리형 (Boolean) : 참, 거짓을 표현하는 데이터 타입
+    // true, false 두가지 데이터 만 사용함
+    // 주로 제어문과 반복문의 조건식에 많이 사용함
+
+    // 사용법
+    // var b = true;
+    // b = false;
+
+    var b = true;
+    console.log(b);
+
+    if (b != true) {
+      console.log("변수 b의 값이 false 입니다.");
+    }
+    else {
+      console.log("변수 b의 값이 true 입니다");
+    }
+
+
+    // Undefined, null : 자바스크립트에서 제공하는 데이터가 없다는 의미의 데이터 타입
+    // undefined 는 변수를 생성 후 초기화하지 않아서 데이터가 존재하지 않다는 의미
+    // null 은 변수 사용 후 데이터를 비워서 존재하지 않는다는 의미
+
+    // 사용법
+    // var 변수명;
+    // var 변수명 = undefined;
+    // var 변수명 = null;
+
+    var num1; // 변수만 선언 후 데이터를 한번도 저장하지 않은 상태
+    console.log(num1);
+    var num1 = 100;
+    console.log(num1);
+    num1 = undefined; // null 대신 undefined 를 사용해도 상관없음
+    console.log(num1);
+    var num2 = null; // 변수 선언 후 null 로 초기화, 데이터가 없음을 표시
+    console.log(num2);
+
+
+    // 배열 (Arrays) : 하나의 변수명으로 여러가지 데이터를 저장하기 위한 데이터 타입
+    // 자바스크립트의 배열은 여러가지 데이터 타입을 모두 저장할 수 있음
+    // 기호는 자바와 같이 [] 를 사용함
+    // 자바와는 달리 변수명에 []를 붙이지 않음
+    // 데이터의 구분은 , 로 구분함
+    // 데디터의 접근은 [index] 를 통해서 진행함
+    // 빈 배열 선언 시 반드시 [] 를 사용하여 초기화 해야 함
+    // 배열 사용에 도움을 주는 여러가지 함수가 존재함
+    // 자바스크립트의 배열은 자바의 ArrayList 처럼 크기가 유동적
+
+    // 사용법
+    // var 배열명 = [데이터1, 데이터2, 데이터3, ... ];
+    // var 배열명 = [];
+    // var 배열명 = new Array(데이터1, 데이터2, 데이터3, ... );
+    // var 배열명 = new Array();
+
+    var arrNum1 = [10, 20, 30, 40, 50]; // 선언과 동시에 데이터 저장
+    console.log(arrNum1); // 배열 내용 모두 출력, console에서만 내용이 보임
+    console.log(arrNum1[0]); // 각 index에서 데이터를 출력
+    console.log(arrNum1[1]);
+    console.log(arrNum1[2]);
+    console.log(arrNum1[3]);
+    console.log(arrNum1[4]);
+    arrNum1[4] = 500; // 지정한 index의 데이터 수정
+    console.log(arrNum1);
+    console.log(arrNum1[4]);
+
+    var arrStr = ['문자1', "문자2", "문자3", '문자4']; // 문자열 배열
+    console.log(arrStr);
+    console.log(arrStr[0]);
+
+    // 여러가지 데이터 타입을 모두 저장한 배열
+    var arrTotal = [10, 20, '사과', '바나나', true, false, [30, 40], {name: "아이유", age: 32}];
+    console.log(arrTotal);
+    console.log(arrTotal[0]);
+    console.log(arrTotal[2]);
+    console.log(arrTotal[4]);
+    console.log(arrTotal[6]);
+    console.log(arrTotal[7]);
+
+    // 배열 관련 함수
+    // 자바스크립트의 배열 사용 시 도움이 되는 여러가지 함수가 존재함
+
+    // length : 현재 배열의 길이를 출력
+    // 사용법 : 배열명.length;
+
+    console.log("\n----- length -----");
+    var arrNum2 = [10, 20, 30, 40, 50];
+    console.log("배열 arrNum2의 길이 : " + arrNum2.length);
+
+    // toString() : 배열의 요소를 모두 출력하여 하나의 문자열로 만들어주는 명령어
+    // 각각의 데이터 구분은 , 로 구분함
+    // 사용법 : 배열명.toString();
+    console.log("\n----- toString() -----");
+    var arrFruits = ["사과", "바나나", "배", "복숭아", "수박"];
+    console.log(arrFruits);
+    var str = arrFruits.toString();
+    console.log(str);
+
+    // at(index) : 배열의 지정한 index에 존재하는 데이터를 가져오는 명령어
+    // 배열명[index] 사용방법에서 추가된 형태
+    // 사용법 : 배열명.at(index);
+    console.log("\n----- at() -----");
+    var arrFruits = ["사과", "바나나", "배", "복숭아", "수박"];
+    var atStr1 = arrFruits.at(2);
+    var atStr2 = arrFruits[2];
+    console.log("at() 사용 시 : " + atStr1);
+    console.log("기존 [] 사용 시 : " + atStr2);
+
+    // join(구분문자) : toString()과 동일한 기능을 하는 명령어
+    // toString()은 문자열로 출력 시 데이터의 구분을 무조건 , 로 지정하지만, join() 사용자가 지정한 문자로 데이터를 구분하여 출력함
+    // 사용법 : 배열명.join("구분 문자");
+    console.log("\n----- join() -----");
+    var arrFruits = ["사과", "바나나", "배", "복숭아", "수박"];
+    var str1 = arrFruits.toString();
+    var str2 = arrFruits.join(" & ");
+    console.log("toString() 사용 시 : " + str1);
+    console.log("join() 사용 시 : " + str2);
+
+    // push()/pop() : 기존 배열에 데이터를 추가하거나 삭제하는 명령어
+    // push(데이터) : 기존 배열의 마지막에 지정한 데이터를 추가
+    // 사용법 : 배열명.push(추가할 데이터);
+
+    // pop() : 기존 배열의 마지막에 있는 데이터를 삭제하는 명령어
+    // 삭제한 데이터를 반환하여 변수에 저장할 수 있음
+    // 사용법 :
+    // 배열명.pop();
+    // var 변수명 = 배열명.pop();
+
+    console.log("\n----- push/pop -----");
+    var arrFruits = ["사과", "바나나", "배", "복숭아", "수박"];
+    console.log("원본 배열 : ");
+    console.log(arrFruits);
+
+    arrFruits.push("오렌지");
+    arrFruits.push("파인애플");
+    arrFruits.push("자몽");
+    console.log("push 사용 후 배열");
+    console.log(arrFruits);
+
+    arrFruits.pop();
+    var str = arrFruits.pop();
+    console.log("pop 사용 후 배열");
+    console.log(arrFruits);
+    console.log("pop()으로 삭제 후 가져온 데이터 : " + str);
+
+    // shift/unshift : 기존 배열의 가장 앞에 데이터를 추가하거나 삭제
+    // unshift(데이터) : 기존 배열의 가장 앞에 데이터를 추가
+    // 사용법 : 배열명.unshift(추가할 데이터);
+
+    // shift() : 기존 배열의 가장 앞에 있는 데이터를 삭제
+    // 삭제한 데이터를 반환받아 사용할 수 있음
+    // 사용법
+    // 배열명.shift();
+    // var 변수명 = 배열명.shift();
+
+    console.log("\n----- shift/unshift -----");
+    var arrFruits = ["사과", "바나나", "배", "복숭아", "수박"];
+    console.log("원본 배열 내용 : ");
+    console.log(arrFruits);
+
+    arrFruits.unshift("망고");
+    arrFruits.unshift("애플망고");
+    arrFruits.unshift("파인애플");
+    console.log("unshift 사용 후 : ");
+    console.log(arrFruits);
+
+    arrFruits.shift();
+    var str = arrFruits.shift();
+    console.log("shift 사용 후 : ");;
+    console.log(arrFruits);
+    console.log("shift 로 삭제한 데이터 : " + str);
+
+    // splice/slice : 배열의 내용을 수정할 때 사용하는 명령어
+
+    // splice() : 기존 배열의 내용을 수정하는 명령어
+    // 원하는 index 위치의 데이터를 수정하거나 추가하거나 삭제할 수 있음
+    // 추가 시 2번째 매개변수를 0 으로 설정
+    // 수정 시 2번째 매개변수의 수와 추가할 데이터를 개수를 동일하게 함
+    // 삭제 시 2번째 매개변수의 수만 입력, 추가할 데이터를 미입력
+    // 사용법 :
+    // 배열명.splice(위치 index, 삭제 개수, 추가할 데이터1, 추가할 데이터2, ... );
+    // 추가 : 배열명.splice(index, 0, 추가데이터1, 추가데이터2, ...);
+    // 수정 : 배열명.splice(index, 2, 추가데이터1, 추가데이터2);
+    // 삭제 : 배열명.splice(index, 2);
+
+    console.log("\n----- splice -----");
+    var arrFruits = ["사과", "바나나", "배", "복숭아", "수박"];
+    console.log("원본 배열 내용 : ");
+    console.log(arrFruits);
+
+    arrFruits.splice(2, 0, "파인애플", "애플망고", "키위");
+    console.log("splice로 데이터 추가 후 : ");
+    console.log(arrFruits);
+
+    arrFruits.splice(5, 2, "자몽", "리치");
+    console.log("splice로 데이터 수정 후 : ");
+    console.log(arrFruits);
+
+    arrFruits.splice(0, 1);
+    arrFruits.splice(6, 1);
+    console.log("splice로 데이터 삭제 후 : ");
+    console.log(arrFruits);
+
+    // slice() : splice()와 비슷한 기능을 가지고 있는 명령어
+    // splice()는 기존 배열의 내용을 수정, slice() 기존 배열에서 수행한 내용을 복사하여 새로운 배열로 만듬
+    // slice()의 매개변수를 1개만 사용 시 지정한 index부터 마지막 index까지의 내용을 모두 복사
+    // slice()의 두번째 매개변수를 사용 시 시작 index부터 두번째 매개변수로 지정한 index까지 모두 복사
+    // 두번째 매개변수로 지정한 index 위치는 포함하지 않음
+    // 사용법 :
+    // 배열명.slice(index, 복사 개수);
+    // var 새배열명 = 원본배열명.slice(index, 복수 개수);
+
+    console.log("\n----- slice -----");
+    var arrFruits = ["사과", "바나나", "배", "복숭아", "수박"];
+    console.log("원본 배열 내용 : ");
+    console.log(arrFruits);
+
+    var newFruits = arrFruits.slice(2);
+    console.log("원본 배열 내용 : ");
+    console.log(arrFruits);
+    console.log("slice로 잘라낸 배열 내용 : ");
+    console.log(newFruits);
+
+    var newFruits = arrFruits.slice(2, 4);
+    console.log("원본 배열 내용 : ");
+    console.log(arrFruits);
+    console.log("slice로 잘라낸 배열 내용 : ");
+    console.log(newFruits);
+
+    // concat() : 두개 이상의 배열을 하나의 배열로 합해주는 명령어
+    // 원본 배열은 그대로 두고 합해진 배열을 새로운 배열로 만들어서 출력
+    // 지정한 배열에 매개변수로 받은 배열을 추가하는 방식
+    // 사용법 : var 새배열명 = 배열명1.concat(배열명2, 배열명3, ... );
+
+    var arrFruits1 = ["사과", "배", "복숭아", "수박"];
+    var arrFruits2 = ["파인애플", "애플망고", "리치", "두리안"];
+    console.log("국내 과일 : ");
+    console.log(arrFruits1);
+    console.log("외국 과일 : ");
+    console.log(arrFruits2);
+
+    var arrFruits3 = arrFruits1.concat(arrFruits2);
+    console.log("concat으로 합한 후 : ");
+    console.log(arrFruits3);
+    console.log("국내 과일 : ");
+    console.log(arrFruits1);
+    console.log("외국 과일 : ");
+    console.log(arrFruits2);
+
+
+    // copyWithin() : 배열 자신의 특정 위치에 있는 요소를 복사하여 배열 자신의 다른 위치에 붙여넣는 명령어
+    // 기존의 배열 내용을 수정
+    // 기존 배열의 크기는 변경되지 않고 그대로 임
+    // 사용법 : 배열명.copyWithin(붙여넣을 index, 시작 index, 종료 index);
+    console.log("\n----- copyWithin -----");
+    var arrFruits = ["사과", "바나나", "배", "복숭아", "수박"];
+    console.log("원본 배열 내용 : ");
+    console.log(arrFruits);
+
+    arrFruits.copyWithin(2, 0);
+    console.log("copyWithin 사용 후 : ");
+    console.log(arrFruits);
+
+    arrFruits.copyWithin(1, 0, 2);
+    console.log("copyWithin 사용 후 : ");
+    console.log(arrFruits);
+
+    // flat() : 다차원 배열의 내용을 1차원 배열로 변경해서 출력
+    // 원본은 그대로 두고 새로운 배열로 만들어서 출력
+    // 사용법 : var 새배열명 = 다차원배열.flat();
+
+    var arrFruits = [
+      ["딸기", "사과"],
+      ["참외", "수박"],
+      ["단감", "감귤"]
+    ];
+    console.log("원본 배열 내용 : ");
+    console.log(arrFruits);
+
+    var newFruits = arrFruits.flat();
+    console.log("flat() 사용 후 ");
+    console.log(newFruits);
+    console.log("원본 배열 내용 : ");
+    console.log(arrFruits);
+
+    // sort/reverse : 배열의 내용을 정렬하는 명령어
+    // sort() : 기존 배열의 내용을 오름차순으로 정렬해주는 명령어
+    // 문자열도 정렬함
+    // 사용법 : 배열명.sort();
+
+    // reverse() : 기존 배열의 순서를 반대로 뒤집어 주는 명령어
+    // 내림차순 정렬이 아니라 기존 배열의 순서를 반대로 뒤집어 주는 것임
+    // 사용법 : 배열명.reverse();
+
+    var arrNum = [10, 5, 2, 8, 6, 9, 1, 4, 3, 7];
+    console.log("원본 배열 내용 :");
+    console.log(arrNum);
+
+    arrNum.sort();
+    console.log("sort() 사용 후 ");
+    console.log(arrNum);
+
+    arrNum.reverse();
+    console.log("reverse() 사용 후 ");
+    console.log(arrNum);
+
+    var arrNum = [10, 5, 2, 8, 6, 9, 1, 4, 3, 7];
+    console.log("원본 배열 내용 :");
+    console.log(arrNum);
+
+    arrNum.reverse();
+    console.log("reverse() 사용 후 ");
+    console.log(arrNum);
+
+
+
+    // object 타입 : 배열처럼 하나의 변수에 여러가지 데이터를 저장하는 데이터 타입
+    // 데이터 저장 시 순서가 없기 때문에 index가 존재하지 않음
+    // key와 value 가 1:1로 연동되어 있음
+    // key는 중복 불가, value는 중복 가능
+    // 자바의 HashMap 과 비슷한 데이터 타입
+    // 기호는 {} 를 사용하며, key와 value의 구분은 : 을 사용하고, 데이터 간의 구분은 , 로 구분함
+    // key 부분에 ' ' 은 생략 가능
+    // object 타입에서 데이터에 접근시 . 기호를 사용
+    // object 타입의 데이터 접근 시 ['key'] 형태로 사용 가능, 반드시 ' ' 를 사용해야 함
+    // 데이터 추가 시 object명.key = 데이터  로 바로 데이터를 추가할 수 있음
+    // object 타입은 자바의 클래스와 같은 것이라고 생각하면 됨
+    // object 타입에는 멤버 변수와 멤버 함수가 다 함께 있음
+    // object 타입에 함수를 제외하고 멤버 변수만 사용하여 데이터 타입처럼 사용함
+
+    // 사용법 :
+    // var object명 = {'키1': '값1', '키2': '값2', ... }; // object 타입 선언과 동시에 데이터 저장
+    // var object명 = {}; // 빈 object 타입 선언
+    // object명.key명; // object 타입의 지정한 key에 대한 값 출력
+    // object명['key명']; // object 타입의 지정한 key에 대한 값 출력
+
+    console.log("\n ----- object 타입 ----- \n");
+    var obj = {'name': "유재석", age: 50, "job": '방송인'};
+    console.log(obj);
+    console.log(obj.name); // object 타입의 요소에 . 을 통해서 접근
+    console.log(obj.age);
+    console.log(obj['job']); // object 타입의 요소에 [] 를 통해서 접근
+
+    var obj2 = {};
+    console.log("원본 obj2 의 내용 :");
+    console.log(obj2);
+    obj2.name = "아이유";
+    obj2['age'] = 32;
+
+    console.log('데이터 추가 후 ');
+    console.log(obj2);
+
+    // object 타입 관련 함수
+    // keys() : object 타입에 저장되어 있는 모든 key를 모아서 출력
+    // 사용법 : var 변수명 = Object.keys(object타입 변수);
+
+    console.log("\n ----- keys ----- \n");
+    var obj = {'name': "유재석", age: 50, "job": '방송인'};
+    console.log("원본 object 내용 ");
+    console.log(obj);
+
+    var arrKeys = Object.keys(obj);
+    console.log('keys 사용 후 ');
+    console.log(arrKeys);
+
+    // values() : object 타입에 저장되어 있는 모든 value를 모아서 출력
+    // 사용법 : var 변수명 = Object.values(object타입 변수);
+
+    console.log("\n ----- values ----- \n");
+    var obj = {'name': "유재석", age: 50, "job": '방송인'};
+    console.log(obj);
+
+    var arrValues = Object.values(obj);
+    console.log("values 사용 후 ");
+    console.log(arrValues);
+
+
+    // NaN : Not a Number 의 줄임말, 데이터 타입 변경 시 데이터가 숫자형으로 변경될 수 있는 없음을 의미
+    // isNaN() : 매개변수로 전달받은 데이터가 숫자형 데이터로 변환될 수 있는지 확인하는 명령어
+    // Number 객체에서 제공하는 메소드 임
+    // 사용법 : var 변수명 = isNaN(확인할 데이터);
+    // var 변수명 = Number.isNaN(확인할 데이터);
+
+    var test1 = "a100";
+    var test2 = "100";
+
+    if (isNaN(test1)) {
+      console.log(test1 + "은 숫자로 변환할 수 없습니다.");
+    }
+    else {
+      var result = Number(test1);
+      console.log(test1 + "을 숫자로 변경할 수 있습니다.");
+      console.log(result);
+    }
+
+    if (isNaN(test2)) {
+      console.log(test2 + "은 숫자로 변환할 수 없습니다.");
+    }
+    else {
+      var result = Number(test2);
+      console.log(test2 + "을 숫자로 변경할 수 있습니다.");
+      console.log(result);
+    }
+
+    var result = Number("문자");
+    console.log(result);
+
+    // 자바스크립트의 연산자
+    // 자바의 연산자와 기본적으로 동일함
+
+    // === , !== : 자바스크립트의 비교 연산자 중 하나로 엄격한 규칙을 통해서 데이터를 비교함
+    // 자바스크립트는 언어 규칙이 느슨한 편으로 문자열 타입의 숫자와 실제 숫자형 데이터를 동일하게 비교함
+    // ===, !== 는 데이터 타입까지 확인하여 비교 연산을 함
+
+    console.log ("\n ------ ==, != ----- \n");
+
+    var a = "100"; // 문자열 타입의 데이터인 숫자 100
+    var b = 100; // 숫자형 타입의 데이터인 숫자 100
+
+    if (a == b) {
+      console.log("변수 a와 b는 같다.");
+    }
+    else {
+      console.log("변수 a와 b는 다르다.");
+    }
+
+    if (a != b) {
+      console.log("변수 a와 b는 다르다.");
+    }
+    else {
+      console.log("변수 a와 b는 같다.");
+    }
+
+    console.log ("\n ------ ===, !== ----- \n");
+
+    if (a === b) {
+      console.log("변수 a와 b는 같다.");
+    }
+    else {
+      console.log("변수 a와 b는 다르다.");
+    }
+
+    if (a !== b) {
+      console.log("변수 a와 b는 다르다.");
+    }
+    else {
+      console.log("변수 a와 b는 같다.");
+    }
+
+    // 자바스크립트의 제어문, 반복문
+    // 자바의 제어문, 반복문과 동일함
+
+    var score = 85;
+    var level = "F";
+    if (score >= 90) {
+      level = "A";
+    }
+    else if (score >= 80) {
+      level = "B";
+    }
+    else if (score >= 70) {
+      level = "C";
+    }
+    else if (score >= 60) {
+      level = "D";
+    }
+    else {
+      level = "F";
+    }
+
+    console.log("당신의 점수는 " + score + "점이고, 등급은 " + level + "입니다");
+
+    var today = new Date();
+
+    switch (today.getDay()) {
+      case 1:
+        console.log("월요일입니다.");
+        break;
+
+      case 2:
+        console.log("화요일입니다.");
+        break;
+
+      case 3:
+        console.log("수요일입니다.");
+        break;
+
+      case 4:
+        console.log("목요일입니다.");
+        break;
+
+      case 5:
+        console.log("금요일입니다.");
+        break;
+
+      default:
+        console.log("주말입니다.");
+        break;
+    }
+
+
+    for (var i = 0; i < 10; i++) {
+      console.log(i);
+    }
+
+    var count = 0;
+
+    while (count < 10) {
+      console.log(count);
+      count++;
+    }
+
+    // for ~ in : 자바의 향상된 for문과 동일한 형태의 for 문
+    // object 타입의 데이터를 출력할 때 많이 사용함
+    // for ~ in 을 통해서 object 타입의 데이터를 출력하면 object 타입의 key를 출력함
+    // for ~ in 을 통해서 object 타입의 value를 출력할려면 object타입명['key명'] 형태로 사용해야 함
+
+    console.log("\n ----- for ~ in -----");
+    var arrNum = {name: "유인나", job: "배우", age: "35", gender: "여성"};
+
+    for (var item in arrNum) {
+      console.log("key = " + item + ", value = " + arrNum[item]);
+    }
+
+    console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+  </script>
+
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

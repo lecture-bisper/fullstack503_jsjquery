@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+  <script>
+// 자바스크립트 함수 사용하기
+
+// 자바스크립트의 함수는 자바의 메소드와 비슷함
+// function 키워드를 사용하여 함수를 선언
+// 함수의 반환 타입을 입력하지 않음 (return 키워드는 사용)
+// 매개변수의 타입을 입력하지 않음 (변수명은 입력)
+// 자바와 달리 접근제한자가 없음
+// 함수명으로 직접 호출해서 사용함
+// 자바스크립트의 변수는 자바스크립트의 모든 데이터 타입을 저장할 수 있기 때문에 함수도 변수에 저장할 수 있음
+// ES6에서는 화살표 함수 지원
+// 함수의 4가지 형태가 존재함
+//    1. 매개변수와 반환값이 없는 함수
+//    2. 매개변수는 있고, 반환값이 없는 함수
+//    3. 매개변수는 없고, 반환값이 있는 함수
+//    4. 매개변수와 반환값이 있는 함수
+
+  // 사용법 (선언)
+  // function 함수명(매개변수명1, 매개변수명2, ...) {
+  //    실행할 소스코드 ...
+  // }
+
+  // 사용법 (호출);
+  // 함수명(매개변수1, 매개변수2, ... );
+
+  function func1() {
+    console.log("함수 선언하기");
+  }
+
+  func1();
+
+  function sum() {
+    var a = 10;
+    var b = 20;
+    var result = a + b;
+    console.log("두 수의 덧셈은 " + result);
+  }
+
+  function sub(a, b) {
+    var result = a - b;
+    console.log("두 수의 뺄셈은 " + result);
+  }
+
+  function multi() {
+    var a = 10;
+    var b = 20;
+    return a * b;
+  }
+
+  function div(a, b) {
+    return a / b;
+  }
+
+  sum();
+  sub(10, 20);
+  var result = multi();
+  console.log("두 수의 곱셈은 " + result);
+  result = div(10, 3);
+  console.log("두 수의 나눗셈은 " + result);
+
+  // 함수와 메소드의 차이점
+  // 함수는 혼자 호출되어 실행되는 것을 함수라고 함
+  // 클래스의 멤버로 객체 생성 후 객체명.메소드명 으로 호출되는 것을 메소드라고 함
+
+  // 익명함수 : 함수의 이름이 없는 함수
+  // 함수의 이름이 없기 때문에 따로 호출할 수 없어서 1회용 함수로 사용함
+  // 변수에 익명함수를 대입하여 변수명을 통해서 호출함
+  // 즉시 실행함수 혹은 콜백 함수로 사용되는 함수
+
+  // 사용법 (선언)
+  // function (매개변수1, 매개변수2, ... ) {
+  //    실행할 소스코드 ...
+  // }
+
+  // 실제로 선언하는 방법
+  // var 변수명 = function (매개변수1, 매개변수2, ... ) {
+  //    실행할 소스코드 ...
+  // }
+
+  // 사용법 (호출)
+  // 함수가들어있는변수명(매개변수1, 매개변수2, ... );
+
+    var sum1 = function (a, b) {
+      console.log("두 수의 덧셈은 " + (a + b));
+      return a + b;
+    }
+
+    var result = sum1(10, 20) + 30;
+    console.log(result);
+
+    sum1 = function (a, b, c) {
+      return a * b * c;
+    }
+
+    result = sum1(10, 20, 30);
+    console.log(result);
+
+  //   즉시 실행 함수 : 익명 함수를 변수에 대입하여 변수명으로 호출해서 사용하는 것이 아니라 익명함수를 선언과 동시에 바로 실행하는 함수
+  //    프로그램 실행 시 단 1번만 실행됨
+  // 사용법
+  // (function (매개변수1, 매개변수2, ...) {
+  //      실행할 소스코드 ...
+  // }(매개변수1, 매개변수2, ...));
+
+    console.log("\n ----- 일반함수 선언/호출 -----\n");
+
+    function gugu1() {
+      var dan = 2;
+      for (var i = 1; i < 10; i++) {
+        console.log(dan + " * " + i + " = " + dan * i);
+      }
+    }
+
+    var gugu2 = function (dan) {
+      for (var i = 1; i < 10; i++) {
+        console.log(dan + " * " + i + " = " + dan * i);
+      }
+    }
+
+    console.log("\n ----- 익명실행함수 -----\n");
+    (function (dan) {
+      for (var i = 1; i < 10; i++) {
+        console.log(dan + " * " + i + " = " + dan * i);
+      }
+    }(5));
+
+  //   콜백 함수 : 함수의 즉시 호출하여 실행하는 것이 아니라 특정 이벤트가 발생 후 자동으로 호출되어 실행되는 익명 함수
+  //   주로 함수의 매개변수로 사용됨
+
+  // 사용법 :
+  // setTimeout(function() {
+  //    console.log("콜백함수 호출");
+  // }, 3000);
+
+    setTimeout(function () {
+      console.log("콜백함수 호출");
+    }, 3000);
+
+
+    console.log("\n\n\n\n\n\n\n\n\n\n\n");
+  </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
