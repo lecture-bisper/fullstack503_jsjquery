@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+<!--  자바스크립트 로딩 방법 -->
+<!--  1. html 파일에 <script> 태그를 사용하는 방법 -->
+<!--  현재 html 파일에 직접 자바스크립트 코드를 입력하여 사용 -->
+<!--  현재 html 파일 안에서만 동작하는 자바스크립트 -->
+
+<!--  2. local에서 js 확장자를 가지는 javascript 파일을 생성 후 로드하는 방법 -->
+<!--  미리 필요한 자바스크립트 코드를 입력 후 여러 html 파일에서 로드하여 사용 -->
+<!--  현재 사이트에서 사용되는 공용적인 자바스크립트 코드를 입력하여 사용 -->
+
+<!--  3. 원격지에서 js 확장자를 가지는 javascript 파일을 로드하는 방법 -->
+<!--  미리 필요한 자바스크립트 코드를 입력 후 여러 사이트에서 로드하여 사용 -->
+<!--  주로 자바스크립트 라이브러리 형태이기 때문에 공통적으로 사용할 수 있는 형태로 구성되어 있음 -->
+<!--  외부 서버에서 로딩하여 가져옴(다른 제작자가 만들어 놓은 것을 로드) -->
+  <script>
+    alert('자바스크립트 로딩 1번 방식');
+  </script>
+
+  <script src="../js/MyJavascript.js"></script>
+
+<!--  html 코드 안에서 javascript 이벤트가 동작하는 방식 -->
+<!--  1. inline 방식 -->
+<!--  html 코드 안에 자바스크립트를 직접 입력하는 방식 -->
+<!--  요즘에는 많이 사용하지 않음 -->
+<!--  특정 부분에 대해서 급한 수정이 필요할 경우 사용 -->
+
+<!--  2. <script> 태그를 html 태그 안에 입력하여 사용하는 방식 -->
+<!--  현재까지 많이 사용하는 방식 -->
+<!--  <script> 태그를 <head> 태그 안에 입력하여 사용하거나 <body> 태그 안에 입력하여 사용 -->
+
+<!--  3. js 확장자를 가지는 자바스크립트 파일을 미리 생성해 놓고 <script> 태그의 src 속성을 통해서 로드하여 사용 -->
+<!--  현재까지 많이 사용하는 방식 -->
+
+<!--  html, css, javascript 는 위에서 아래로 내려오면서 한줄씩 실행 -->
+<!--  현재 자바스크립트의 입력을 <head> 태그에 입력하는 것을 권장 -->
+</head>
+<body>
+
+<div class="container">
+  <button class="btn btn-primary" onclick="alert('inline방식 사용');">inline 방식</button>
+  <button class="btn btn-success" id="btn02">script 태그 사용 방식</button>
+  <button class="btn btn-info" id="btn03">외부 파일 로드 방식</button>
+</div>
+
+<script>
+  var btn02 = document.getElementById("btn02");
+  btn02.onclick = function () {
+    alert('script 태그 방식 사용');
+  }
+</script>
+<script src="../js/myScript02.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
