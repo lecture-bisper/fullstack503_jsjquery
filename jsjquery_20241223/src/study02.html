@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+
+  <script src="../js/jquery-3.7.1.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+<!--  자바스크립트는 <head>, <body> 태그 안에 입력하여 사용 -->
+<!--  자바스크립트는 html 파일의 <head> 태그 안에 입력하는 것을 권장 -->
+<!--  html, css, javascript 는 위에서 아래로 내려오면서 한줄씩 실행 -->
+
+  <script>
+    // var btn01 = document.getElementById("btn01");
+    // btn01.onclick = function () {
+    //   alert("버튼 01번 클릭!!");
+    // }
+  </script>
+
+  <script>
+    // html 문서 로딩 후 동작하는 이벤트인 load 이벤트를 사용하여 현재 html 문서가 모두 로딩된 다음에 아래의 javascript 가 동작하도록 함
+    window.onload = function () {
+      var btn01 = document.getElementById("btn01");
+      btn01.onclick = function () {
+        alert("버튼 01번 클릭!!");
+      }
+    }
+  </script>
+
+<!--  현재는 onload 이벤트를 사용하지 않음 -->
+<!--  load 이벤트는 현재 페이지의 모든 리소스가 로딩된 다음에 동작하도록 하는 방식이기 때문에 리소스 로딩에 시간이 오래 걸림 -->
+<!--  리소스는 이미지 및 음악 파일, 영상 파일 등을 의미함 -->
+
+<!--  현재는 jquery의 ready 이벤트 및 document의 addEventListener 를 사용하는 방식을 사용함 -->
+<!--  현재 방식은 html과 css 의 로딩 후 이벤트가 동작하는 방식임 -->
+<!--  html의 document 를 사용하는 방식은 document.addEventListener("DOMContentLoaded", 콜백함수) 형태로 사용함 -->
+<!--  jquery를 사용하는 방식은 $(document).ready(콜백함수) 형태로 사용함 -->
+
+  <script>
+    // 순수 자바스크립트를 사용하는 방식
+    document.addEventListener("DOMContentLoaded", function () {
+      var btn03 = document.getElementById("btn03");
+      btn03.onclick = function () {
+        alert("DOMContentLoaded 방식 사용하여 클릭!!");
+      }
+    });
+  </script>
+
+  <script>
+    // jquery 를 사용하는 방식
+    $(document).ready(function () {
+      var btn04 = document.getElementById("btn04");
+      btn04.onclick = function () {
+        alert("jquery 를 사용하여 클릭!!");
+      }
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <button class="btn btn-primary" id="btn01">클릭 1</button>
+  <button class="btn btn-primary" id="btn02">클릭 2</button>
+  <button class="btn btn-success" id="btn03">DOMContentLoaded 방식 사용</button>
+  <button class="btn btn-info" id="btn04">jquery 방식 사용</button>
+</div>
+
+<script>
+  var btn02 = document.getElementById("btn02");
+  btn02.onclick = function () {
+    alert("버튼 02번 클릭!!");
+  }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
