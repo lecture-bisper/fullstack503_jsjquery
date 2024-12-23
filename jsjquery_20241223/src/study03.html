@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>이벤트 동작 방식</title>
+
+  <script src="../js/jquery-3.7.1.js"></script>
+
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <script src="../js/bootstrap.js"></script>
+
+  <!--  기본 html에서 자바스크립트의 이벤트 사용 방법 -->
+  <!--  html 태그 검색 방법 -->
+  <!--  1. getElementById() : 예전부터 사용하는 방식으로 html 태그의 id값을 기반으로 html 태그를 1개를 검색하여 가져옴 -->
+  <!--  매개변수로 id 값만 입력하여 사용 -->
+  <!--  2. getElementsByClassName() : 예전부터 사용하는 방식으로 html 태그의 class값을 기반으로 html 태그를 검색하여 모두 가져옴 -->
+  <!--  매개변수로 class 값만 입력하여 사용 -->
+  <!--  동일한 클래스를 사용하는 html 태그가 여러개 있을 수 있기 때문에 배열 형태로 가져옴 -->
+  <!--  3. getElementsByTagName() : 예전부터 사용하는 방식으로 html 태그의 태그명을 기반으로 html 태그를 검색하여 모두 가져옴 -->
+  <!--  매개변수로 class 값만 입력하여 사용 -->
+  <!--  동일한 이름의 태그가 여러개 있을 수 있기 때문에 배열 형태로 가져옴 -->
+  <!--  4. querySelector() : 매개변수로 받은 html 태그를 검색하여 1개의 html 태그를 가져옴 -->
+  <!--  html 태그를 검색하는 최신 방식 -->
+  <!--  매개변수로 id, class, tag명 모두 사용할 수 있음(css 선택자를 모두 사용할 수 있음) -->
+  <!--  매개변수에 CSS 선택자를 뜻하는 기호(#, . 등)를 사용함-->
+  <!--  검색되는 html 태그 중 가장 먼저 검색되는 html 태그를 가져옴 -->
+  <!--  5. querySelectorAll() : 매개변수로 받은 html 태그를 검색하여 모든 html 태그를 가져옴 -->
+  <!--  매개변수로 css 선택자를 사용함 (css 선택자 기호 필수) -->
+  <!--  검색되는 모든 html 태그를 가져와서 배열로 출력 -->
+  <!--  6. jquery의 $("css선택자") 방식 : jquery 를 사용하여 css 선택자로 html 태그를 검색 -->
+  <!--  querySelect(), querySelectAll() 방식과 사용하는 방법이 동일 -->
+  <!--  $("css선택자") 방식으로 html 태그를 1개 가져오거나 여러개를 가져오거나 할 수 있음 -->
+  <!--  1개를 가져오면 html 태그를 1개 출력하고, 여러개를 검색하여 가져오면 배열로 출력 -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // getElementById() 로 html 태그 가져오기
+      var btn02 = document.getElementById("btn02");
+      // querySelector() 로 html 태그 가져오기
+      var btn03 = document.querySelector("#btn03");
+      // jquery로 html 태그 가져오기
+      var btn04 = $("#btn04");
+
+      btn02.onclick = function () {
+        alert('getElementById 사용');
+      };
+
+      btn03.onclick = function () {
+        alert("querySelector 사용");
+      };
+
+      btn04.click(function () {
+        alert("jquery 사용");
+      });
+
+
+      // 클릭 이벤트 발생 시 실행할 함수
+      function btn07Click() {
+        alert("btn05에서 대신 이벤트 설정");
+      }
+
+      // id 값을 btn07로 사용하는 html 태그를 검색하여 가져와서 자바스크립트 변수 btn07에 저장
+      var btn07 = document.querySelector("#btn07");
+
+      // id 값을 btn05로 사용하는 html 태그를 검색하여 가져와서 자바스크립트 변수 btn05에 저장
+      var btn05 = document.querySelector("#btn05");
+      // 변수 btn05의 이벤트 리스너에 클릭 이벤트 등록
+      btn05.addEventListener("click", function() {
+        // 변수 btn07의 이벤트 리스너에 클릭 이벤트 등록
+        // btn05의 이벤트에서 btn07의 이벤트를 대신 등록
+        // 미리 만들어 둔 btn07Click함수를 콜백함수로 등록
+        btn07.addEventListener("click", btn07Click);
+
+        alert("addEventListener 를 사용하여 이벤트 등록");
+      });
+
+      // id 값을 btn06로 사용하는 html 태그를 검색하여 가져와서 자바스크립트 변수 btn06에 저장
+      var btn06 = document.querySelector("#btn06");
+      // 변수 btn06의 이벤트 리스너에 클릭 이벤트 등록
+      btn06.addEventListener("click", function() {
+        // 변수 btn07의 이벤트 리스너에서 클릭 이벤트 삭제
+        // btn06의 이벤트에서 btn07의 이벤트를 대신 삭제
+        // 콜백함수로 등록해 둔 btn07Click을 삭제
+        btn07.removeEventListener("click", btn07Click);
+
+        alert("removeEventListener 를 사용하여 등록된 이벤트 삭제");
+      });
+
+
+    });
+
+    function funcClick() {
+      alert("미리 생성한 함수를 inline 이벤트 속성에 설정하여 사용");
+    }
+  </script>
+
+<!--  순수 자바스크립트 사용 시 이벤트 설정 방법 -->
+<!--  1. inline 방식 -->
+<!--  html 태그의 이벤트 속성을 설정하고, 바로 javascript 코드 입력 -->
+<!--  미리 생성한 자바스크립트 함수를 html 태그의 이벤트 속성에 설정 -->
+<!--  현재는 잘 사용하지 않음 -->
+
+<!--  2. 가져온 html태그.이벤트 속성에 익명 함수를 사용하는 방식 -->
+<!--  getElementById(), querySelector() 등을 사용하여 html 태그를 가져오고, 해당 html 태그의 이벤트 속성에 익명 함수를 대입하여 이벤트를 실행 -->
+<!--  현재는 잘 사용하지 않음 -->
+
+<!--  3. 이벤트 리스너를 사용하는 방식 -->
+<!--  addEventListener(), removeEventListener() 를 사용하여 이벤트를 등록하는 방식 -->
+<!--  이벤트 리스너에 이벤트를 등록하고 해당 이벤트가 발생 시 지정한 콜백함수를 실행하여 동작 -->
+<!--  원하는 시점에 원하는 이벤트를 등록하고, 삭제할 수 있음 -->
+<!--  현재 사용하는 방식 -->
+<!--  사용법 : -->
+<!--  html태그.addEventListener(이벤트종류, 콜백함수); -->
+<!--  html태그.removeEventListener(이벤트종류); -->
+</head>
+<body>
+
+<div class="container mt-5">
+  <button class="btn btn-primary" onclick="alert('inline 사용');">inline 사용</button>
+  <button class="btn btn-primary" onclick="funcClick();">미리 생성한 함수 호출</button>
+  <button class="btn btn-primary" id="btn02">getElementById 사용</button>
+  <button class="btn btn-primary" id="btn03">querySelect 사용</button>
+  <button class="btn btn-primary" id="btn04">jquery 사용</button>
+
+  <br><br>
+
+  <button class="btn btn-success" id="btn05">addEventListener 사용</button>
+  <button class="btn btn-success" id="btn06">removeEventListener 사용</button>
+  <button class="btn btn-success" id="btn07">등록된 이벤트 실행</button>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
