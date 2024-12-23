@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+  <!--  jquery : javascript를 쉽게 사용하기 위한 라이브러리 -->
+  <!--  jquery는 웹 표준이 제대로 지켜지지 않았던 시절에 여러가지 웹 브라우저에서 정확한 형태대로 동작하지 않는 문제를 해결하기 위해서 만들어 짐 -->
+  <!--  jquery를 사용하면 하나의 소스코드로 여러 웹 브라우저에서 동일한 형태로 사용이 가능함 -->
+  <!--  javascript의 기능을 쉽게 사용할 수 있음 -->
+
+  <!--  설치 방법 -->
+  <!--  1. local에 jquery 파일을 등록하고 <script> 태그로 로드하여 사용 -->
+  <!--  <script src="../js/jquery-3.7.1.js"></script>-->
+  <!--  2. 외부 서버에 등록되어 있는 jquery 파일을 로드하여 사용 -->
+  <!--  cdn 서버의 주소를 복사하여 <script> 태그로 로드하여 사용 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!--  사용법 : -->
+  <!--  $jquery(css선택자) : 잘 사용 안함, css선택자로 html 태그 검색 -->
+  <!--  $(css선택자) : 주로 사용함, css선택자로 html 태그 검색 -->
+  <!--  $(css선택자).jquery함수(); : css선택자로 검색한 html 태그에 jquery 함수를 실행 -->
+
+  <script>
+    // jquery를 사용하여 html, css 가 모두 로딩된 이후에 이벤트 발생
+    $(document).ready(function () {
+
+      // jquery로 id값이 btn01 인 html 태그를 검색하여 click 이벤트를 설정함, 예전 방식
+      // 매개변수로 콜백함수를 사용함
+      // $("#btn01").click(function() {
+      //   alert("클릭!!");
+      // });
+
+      // jquery로 id값이 btn01 인 html 태그를 검색하여 click 이벤트를 설정함, 현재 방식
+      // 매개변수로 콜백함수를 사용함
+      $("#btn01").on("click", function () {
+        alert("최근방식으로 클릭!!");
+      });
+
+      //   on() : 지정한 html 태그의 이벤트 리스너에 지정한 이벤트를 등록
+      //   사용법
+      //   $(css선택자).on(이벤트종류, 콜백함수);
+
+      //   off() : 지정한 html 태그의 이벤트 리스너에서 지정한 이벤트를 삭제
+      //   $(css선택자).off(이벤트종류);
+
+      //   one() : 지정한 html 태그의 이벤트 리스너에 지정한 이벤트를 1회용으로 등록
+      //   $(css선택자).one(이벤트종류, 콜백함수);
+
+      // btn02에 클릭 이벤트 등록
+      $("#btn02").on("click", function () {
+        // btn03에 클릭 이벤트 대신 등록
+        $("#btn03").on("click", function () {
+          // btn03의 버튼 글자 변경
+          $("#btn03").text("이벤트 설정됨");
+          alert("클릭 이벤트 등록됨!!");
+        });
+        alert("btn03에 클릭 이벤트 대신 등록");
+      });
+
+      // btn04에 클릭 이벤트 등록
+      $("#btn04").on("click", function () {
+        // btn03의 클릭 이벤트를 대신 삭제
+        $("#btn03").off("click");
+        // btn03의 글자 변경
+        $("#btn03").text("현재 이벤트 없음");
+        alert("btn03의 클릭 이벤트 삭제");
+      });
+
+      // btn05에 클릭 이벤트 등록
+      $("#btn05").on("click", function () {
+        $("#btn03").one("click", function () {
+          alert("1회용 이벤트 동작\n다음 클릭 시 이벤트 동작 안함!");
+        });
+
+        alert("btn03에 1회용 이벤트 등록");
+      });
+
+      $("#btnEvent01").on("click", function() {
+        alert("클릭 이벤트 발생");
+      });
+
+      $("#btnEvent02").on("dblclick", function() {
+        alert("더블 클릭 이벤트 발생");
+      });
+
+      $("#btnEvent03").on("mousedown", function() {
+        alert("마우스 다운 이벤트 발생");
+      });
+
+      $("#btnEvent04").on("mouseup", function() {
+        alert("마우스 업 이벤트 발생");
+      });
+
+      $("#btnEvent05").on("contextmenu", function() {
+        alert("마우스 오른쪽 버튼 클릭 이벤트 발생");
+      });
+
+      $("#divEvent01").on("mouseover", function() {
+        alert("divEvent01 태그 위로 마우스 포인트가 이동함");
+      });
+
+      $("#divEvent01").on("mouseout", function() {
+        alert("divEvent01 태그 위에서 마우스 포인터가 나감");
+      });
+
+      $("#divEvent02").on("mousemove", function(e) {
+        console.log("x좌표 : " + e.offsetX + ", Y좌표 : " + e.offsetY);
+      });
+
+
+    //   키보드 이벤트 (keyUp, keyDown)
+      $("#input-text1").on("keydown", function() {
+        alert("keydown 이벤트 발생");
+      });
+
+      $("#input-text2").on("keyup", function() {
+        alert("keyup 이벤트 발생");
+      });
+
+    //   form 이벤트 (submit, change, focus, blur)
+      $("#frm").on("submit", function() {
+        alert("submit 이벤트 발생");
+      });
+
+      // 지정한 태그에 focus가 주어졌을 경우 이벤트 발생
+      $("#input-text1").on("focus", function() {
+        $("#input-text1").css("background-color", "yellow");
+        $("#input-text1").css("font-weight", "bold");
+        $("#input-text1").css("font-size", "24px");
+      });
+
+      // 지정한 태그가 가지고 있던 focus가 사라졌을 경우 이벤트 발생
+      $("#input-text1").on("blur", function() {
+        $("#input-text1").css({"background-color": "white", "font-weight": "normal", "font-size": "16px"});
+      });
+
+      // 지정한 태그의 내용이 변경되었을 경우 이벤트 발생
+      $("#input-text2").on("change", function() {
+        console.log($("#input-text2").val());
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <button class="btn btn-primary" id="btn01">jquery로 클릭</button>
+  <hr>
+  <button class="btn btn-primary" id="btn02">이벤트 등록</button>
+  <button class="btn btn-info" id="btn03">현재 이벤트 없음</button>.
+  <button class="btn btn-danger" id="btn04">이벤트 삭제</button>
+  <button class="btn btn-success" id="btn05">1회용 이벤트 등록</button>
+
+  <br><hr><br>
+
+  <div class="my-3">
+    <h3>마우스 이벤트</h3>
+    <button class="btn btn-primary" id="btnEvent01">클릭 이벤트</button>
+    <button class="btn btn-primary" id="btnEvent02">더블 클릭 이벤트</button>
+    <button class="btn btn-primary" id="btnEvent03">마우스 다운 이벤트</button>
+    <button class="btn btn-primary" id="btnEvent04">마우스 업 이벤트</button>
+    <button class="btn btn-primary" id="btnEvent05">오른쪽 버튼 클릭 이벤트</button>
+    <br><br>
+    <div class="bg-primary" style="height: 200px; width: 200px" id="divEvent01">divEvent01</div>
+    <div class="bg-success" style="height: 200px; width: 200px" id="divEvent02">divEvent02</div>
+  </div>
+
+  <br><hr><br>
+
+  <div class="my-3">
+    <h3>키보드 이벤트, form 이벤트</h3>
+    <form id="frm">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="my-3">
+            <label for="input-text1" class="form-label">키보드 이벤트</label>
+            <input type="text" class="form-control" id="input-text1" placeholder="keydown 이벤트 설정됨">
+          </div>
+          <div class="my-3">
+            <label for="input-text2" class="form-label">키보드 이벤트</label>
+            <input type="text" class="form-control" id="input-text2" placeholder="keyup 이벤트 설정됨">
+          </div>
+          <div class="my-3">
+            <button type="submit" class="btn btn-primary">submit 버튼</button>
+            <button type="reset" class="btn btn-warning">reset 버튼</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
