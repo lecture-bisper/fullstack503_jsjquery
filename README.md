@@ -11,3 +11,7 @@
 	3. javascript 이벤트 사용하기
 	4. jquery 란?, jquery 설치, jquery 사용하기, jquery 이벤트 함수(on, off, one), 마우스 이벤트, 키보드 이벤트, 폼 이벤트
 	5. jquery 이펙트 (hide, show, toggle)
+3. 3일차 수업 (jsjquery_20241224)
+	1. fadeIn(), fadeOut(), fadeToggle(), fadeTo(), slideDown(), slideUp(), slideToggle(), animate(), stop(), chaining
+	2. html 조작하기, text(), html(), val(), attr()
+	3. html 추가/삭제, prepend(), append(), before(), after(), remove(), empty()
