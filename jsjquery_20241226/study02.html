@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery의 너비, 높이 함수</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+  <style>
+    #div01 {
+        height: 200px;
+        width: 400px;
+        padding: 20px;
+        border: 5px solid blue;
+        margin: 10px;
+        background-color: lightskyblue;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+    //   jquery 에서는 html 태그의 너비와 높이를 설정하기 위한 여러가지 함수를 제공함
+
+    //   width() : html 태그의 컨텐츠 영역의 너비를 설정하거나 가져옴
+    //   사용법 :
+    //   var 변수명 = $(css선택자).width();
+    //   $(css선택자).width(설정할 크기);
+
+    //   height() : html 태그의 컨텐츠 영역의 높이를 설정하거나 가져옴
+    //   사용법 :
+    //   var 변수명 = $(css선택자).height();
+    //   $(css선택자).height(설정할 크기);
+
+    //   innerWidth() : html 태그의 padding 영역까지의 너비를 가져옴(설정X)
+    //   사용법 : var 변수명 = $(css선택자).innerWidth();
+
+    //   innerHeight() : html 태그의 padding 영역까지의 높이를 가져옴(설정X)
+    //   사용법 : var 변수명 = $(css선택자).innerHeight();
+
+    //   outerWidth() : html 태그의 border 영역까지의 너비를 가져옴(설정X)
+      //   사용법 : var 변수명 = $(css선택자).outerWidth();
+
+    //   outerHeight() : html 태그의 border 영역까지의 높이를 가져옴(설정X)
+    //   사용법 : var 변수명 = $(css선택자).outerHeight();
+
+    //   outerWidth(true) : html 태그의 margin 영역까지의 너비를 가져옴(설정X)
+    //   사용법 : var 변수명 = $(css선택자).outerWidth(true);
+
+    //   outerHeight(true) : html 태그의 margin 영역까지의 높이를 가져옴(설정X)
+    //   사용법 : var 변수명 = $(css선택자).outerHeight(true);
+
+      $("#btnGetSize01").on("click", function() {
+        var txt = getSize();
+        $("#div01").html(txt);
+      });
+
+      $("#btnGetSize02").on("click", function() {
+        var txt = getSize();
+        txt = getInnerSize(txt);
+        $("#div01").html(txt);
+      });
+
+      $("#btnGetSize03").on("click", function() {
+        var txt = getSize();
+        txt = getInnerSize(txt);
+        txt = getOuterSize(txt, false);
+        $("#div01").html(txt);
+      });
+
+      $("#btnGetSize04").on("click", function() {
+        var txt = getSize();
+        txt = getInnerSize(txt);
+        txt = getOuterSize(txt, false);
+        txt = getOuterSize(txt, true);
+        $("#div01").html(txt);
+      });
+
+      $("#btnSetSize").on("click", function() {
+        // $("#div01").width(800).height(400);
+        $("#div01").width(800);
+        $("#div01").height(400);
+      });
+    });
+
+    function getSize() {
+      var txt = "";
+      txt += "width : " + $("#div01").width() + "px<br>";
+      txt += "height : " + $("#div01").height() + "px<br>";
+      return txt;
+    }
+
+    function getInnerSize(txt) {
+      txt += "inner width : " + $("#div01").innerWidth() + "px<br>";
+      txt += "inner height : " + $("#div01").innerHeight() + "px<br>";
+      return txt;
+    }
+
+    function getOuterSize(txt, flag) {
+      if (flag == true) {
+        txt += "outer width(margin) : " + $("#div01").outerWidth(true) + "px<br>";
+        txt += "outer height(margin) : " + $("#div01").outerHeight(true) + "px<br>";
+      }
+      else {
+        txt += "outer width : " + $("#div01").outerWidth() + "px<br>";
+        txt += "outer height : " + $("#div01").outerHeight() + "px<br>";
+      }
+
+      return txt;
+    }
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h3>jquery의 너비, 높이 함수</h3>
+
+  <div>
+    <button type="button" class="btn btn-primary" id="btnGetSize01">클릭 시 너비, 높이 출력</button>
+    <button type="button" class="btn btn-primary" id="btnGetSize02">클릭 시 padding 까지의 너비, 높이 출력</button>
+    <button type="button" class="btn btn-primary" id="btnGetSize03">클릭 시 border 까지의 너비, 높이 출력</button>
+    <button type="button" class="btn btn-primary" id="btnGetSize04">클릭 시 margin 까지의 너비, 높이 출력</button>
+    <button type="button" class="btn btn-primary" id="btnSetSize">클릭 시 크기 변경</button>
+    <hr>
+    <div id="div01"></div>
+  </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
