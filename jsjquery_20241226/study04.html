@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery로 html 태그 찾기 (형제 태그, 필터링)</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+  <style>
+    .siblings, .siblings * {
+        display: block;
+        border: 2px solid lightslategray;
+        color: lightslategray;
+        padding: 5px;
+        margin: 15px;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+    //   jquery에서는 같은 level 에 있는 형제 태그를 찾기 위한 함수가 제공됨
+
+    //   siblings() : 지정한 html 태그와 같은 단계에 있는 다른 html 태그를 모두 가져옴
+    //   매개변수를 사용하여 형제 태그 중 지정한 태그만 가져올 수 있음
+    //   사용법 :
+    //   var 변수 = $(css선택자).siblings();
+    //   var 변수 = $(css선택자).siblings(css선택자);
+      $("#btnSiblings01").on("click", function() {
+        $("#div01 h2").siblings().css({"color": "red", "border": "2px solid red"});
+      });
+
+      $("#btnSiblings02").on("click", function() {
+        $("#div01 h2").siblings("p").css({"color": "red", "border": "2px solid red"});
+      });
+
+    //   next() : 지정한 html 태그 다음에 존재하는 html 태그를 1개 가져옴
+    //   사용법 : var 변수 = $(css선택자).next();
+      $("#btnNext").on("click", function() {
+        $("#div01 h2").next().css({"color": "red", "border": "2px solid red"});
+      });
+
+    //   nextAll() : 지정한 html 태그 다음에 존재하는 html 태그를 모두 가져옴
+    //   사용법 : var 변수 = $(css선택자).nextAll();
+      $("#btnNextAll").on("click", function() {
+        $("#div01 h2").nextAll().css({"color": "red", "border": "2px solid red"});
+      });
+
+    //   nextUntil() : 지정한 html 태그 다음에 존재하는 html 태그 중 매개변수로 지정한 태그 사이에 있는 html 태그를 모두 가져옴
+    //   사용법 : var 변수 = $(css선택자).nextUntil(css선택자);
+      $("#btnNextUntil").on("click", function() {
+        $("#div01 h2").nextUntil("p").css({"color": "red", "border": "2px solid red"});
+      });
+
+    //   prevXXX() 는 함수는 nextXXX() 함수와 개념과 사용 방법이 같음
+    //   prev() : 지정한 html 태그 이전에 존재하는 html 태그를 1개 가져옴
+    //   prevAll() : 지정한 html 태그 이전에 존재하는 html 태그를 모두 가져옴
+    //   prevUntil() : 지정한 html 태그 이전에 존재하는 html 태그 중 매개변수로 지정한 태그사이에 있는 html 태그를 모두 가져옴
+
+
+    //   jquery에서는 원하는 태그를 선택하기 위한 필터링과 관련된 함수를 제공
+
+    //   first() : 지정한 html 태그 중 첫번째로 검색되는 html 태그를 가져옴
+    //   css 선택자로 검색된 여러 개의 html 태그 중 첫번째로 검색되는 html 태그 1개를 가져옴
+    //   사용법 : var 변수 = $(css선택자).first();
+      $("#btnFirst").on("click", function() {
+        $("#div02 > div > div").first().css({"background-color": "yellow"});
+      });
+
+    //   last() : 지정한 html 태그 중 마지막으로 검색되는 html 태그를 가져옴
+    //   css 선택자로 검색된 여러 개의 html 태그 중 마지막으로 검색되는 html 태그를 1개 가져옴
+    //   사용법 : var 변수 = $(css선택자).last();
+      $("#btnLast").on("click", function() {
+        $("#div02 > div > div").last().css({"background-color": "yellow"});
+      })
+
+    //   eq() : 지정한 html 태그 중 원하는 순서에 있는 html 태그를 가져옴
+    //   css 선택자로 검색된 여러 개의 html 태그 중 매개변수로 전달한 index에 있는 태그를 1개 가져옴
+    //   index는 0 부터 시작
+    //   사용법 : var 변수 = $(css선택자).eq(index번호);
+      $("#btnEQ").on("click", function() {
+        $("#div02 > div > div").eq(2).css({"background-color": "yellow"});
+      });
+
+    //   filter() : 지정한 html 태그 중 매개변수로 전달한 css 선택자를 가진 html 태그를 모두 가져옴
+    //   css 선택자로 검색된 여러 개의 html 태그 중 매개변수로 전달한 css 선택자와 일치하는 html 태그를 모두 가져옴
+    //   사용법 : var 변수 = $(css선택자).filter(css선택자);
+      $("#btnFilter").on("click", function() {
+        $("#div02 p").filter(".intro").css({"background-color": "yellow"});
+      });
+
+    //   not() : 지정한 html 태그 중 매개변수로 전달한 css 선택자를 가진 html 태그를 제외한 모든 태그를 가져옴
+    //   filter() 와 반대되는 기능
+    //   사용법 : var 변수 = $(css선택자).not(css선택자);
+      $("#btnNot").on("click", function() {
+        $("#div02 p").not(".intro").css({"background-color": "yellow"});
+      });
+    });
+  </script>
+
+</head>
+<body>
+
+<div class="container mt-5">
+  <div id="div01">
+    <h3>형제태그 검색하기</h3>
+    <button type="button" class="btn btn-primary" id="btnSiblings01">siblings() 사용</button>
+    <button type="button" class="btn btn-primary" id="btnSiblings02">siblings(css선택자) 사용</button>
+    <button type="button" class="btn btn-success" id="btnNext">next() 사용</button>
+    <button type="button" class="btn btn-info" id="btnNextAll">nextAll() 사용</button>
+    <button type="button" class="btn btn-warning" id="btnNextUntil">nextUntil() 사용</button>
+    <hr>
+    <div class="siblings">div (부모 태그)
+      <p>첫번째 형제 태그 p</p>
+      <span>두번째 형제 태그 span</span>
+      <h2>세번째 형제 태그 h2</h2>
+      <h3>네번째 형제 태그 h3</h3>
+      <h4>다섯번째 형제 태그 h4</h4>
+      <p>여섯번째 형제 태그 p</p>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div id="div02">
+    <h3>필터링 사용하기</h3>
+    <button type="button" class="btn btn-primary" id="btnFirst">first() 사용</button>
+    <button type="button" class="btn btn-success" id="btnLast">last() 사용</button>
+    <button type="button" class="btn btn-info" id="btnEQ">eq() 사용</button>
+    <button type="button" class="btn btn-warning" id="btnFilter">filter() 사용</button>
+    <button type="button" class="btn btn-danger" id="btnNot">not() 사용</button>
+    <hr>
+    <div>
+      <h4>필터링을 위해서 여러가지 html 태그를 입력함</h4>
+      <div class="border border-1 border-dark my-3 p-2">
+        <h5>index 0</h5>
+        <p>첫번째 div 태그의 자식 태그인 p 태그</p>
+        <p>첫번째 div 태그의 자식 태그인 p 태그의 형제 태그</p>
+      </div>
+      <div class="border border-1 border-dark my-3 p-2">
+        <h5>index 1</h5>
+        <p class="intro">두번째 div 태그의 자식 태그인 p 태그</p>
+        <p class="intro">두번째 div 태그의 자식 태그인 p 태그의 형제 태그</p>
+      </div>
+      <div class="border border-1 border-dark my-3 p-2">
+        <h5>index 2</h5>
+        <p>세번째 div 태그의 자식 태그인 p 태그</p>
+        <p>세번째 div 태그의 자식 태그인 p 태그의 형제 태그</p>
+      </div>
+      <div class="border border-1 border-dark my-3 p-2">
+        <h5>index 3</h5>
+        <p class="intro">마지막 div 태그의 자식 태그인 p 태그</p>
+        <p class="intro">마지막 div 태그의 자식 태그인 p 태그의 형제 태그</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
