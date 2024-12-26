@@ -15,3 +15,8 @@
 	1. fadeIn(), fadeOut(), fadeToggle(), fadeTo(), slideDown(), slideUp(), slideToggle(), animate(), stop(), chaining
 	2. html 조작하기, text(), html(), val(), attr()
 	3. html 추가/삭제, prepend(), append(), before(), after(), remove(), empty()
+4. 4일차 수업 (jsjquery_20241226)
+	1. css 조작하기, addClass(), removeClass(), toggleClass(), css()
+	2. jquery의 너비, 높이 함수, width(), height(), innerWidth(), innerHeight(), outerWidth(), outerHeight()
+	3. jquery의 태그 검색 함수, parent(), parents(), parentsUntil(), children(), find()
+	4. jquery의 태그 검색 함수, siblings(), next(), nextAll(), nextUntil(), prev(), prevAll(), prevUntil(), first(), last(), eq(), filter(), not()

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery로 css 제어</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+
+  <style>
+    .important {
+        font-weight: bold;
+        font-size: xx-large;
+    }
+
+    .blue {
+        color: blue;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+    //   jquery를 사용하면 CSS를 쉽게 제어할 수 있음
+
+    //   addClass() : 지정한 html 태그의 class 속성에 미리 만들어 둔 css 클래스 설정을 추가
+    //   매개변수로 미리 만들어 둔 css 클래스명을 여러개 나열할 수 있음
+    //   css클래스를 여러개 입력 시 구분 기호는 ' ' (공백기호) 를 사용함
+    //   html 태그를 선택하기 위한 css선택자도 여러개를 선택할 수 있음
+    //   사용법 : $(css선택자).addClass("css클래스1 css클래스2 css클래스3 ... ");
+      $("#btnAddClass01").on("click", function() {
+        $("h1, h2, p").addClass("blue");
+        $(".divAdd").addClass("important");
+      });
+
+      $("#btnAddClass02").on("click", function() {
+        $(".divAdd2").addClass("blue important");
+      });
+
+    //   removeClass() : 지정한 html 태그의 class 속성에서 지정한 css 클래스를 삭제
+    //   css클래스를 여러개 입력 시 구분 기호는 ' ' (공백기호) 를 사용함
+    //   html 태그를 선택하기 위한 css선택자도 여러개를 선택할 수 있음
+    //   사용법 : $(css선택자).removeClass("css클래스1, css클래스2 ... ");
+      $("#btnRemoveClass").on("click", function() {
+        $("h1, h2, p").removeClass("blue");
+      });
+
+    //   toggleClass() : 지정한 html 태그의 class 속성에서 지정한 css 클래스에 대해 addClass(), removeClass() 기능을 실행함
+    //   css클래스를 여러개 입력 시 구분 기호는 ' ' (공백기호) 를 사용함
+    //   html 태그를 선택하기 위한 css선택자도 여러개를 선택할 수 있음
+    //   사용법 : $(css선택자).toggleClass("css클래스1 css클래스2 ... ");
+      $("#btnToggleClass").on("click", function() {
+        $("#div03 h1, #div03 h2, #div03 p").toggleClass("blue");
+      });
+
+    //   css() : 지정한 html 태그의 css 속성을 직접 추가, 수정, 삭제하거나 가져올 수 있음
+    //   한번에 여러개의 css 속성을 설정할 수 있음
+    //   기존의 css 속성값을 가져올 경우 1개씩만 가능
+    //   사용법 :
+    //   $(css선택자).css("css속성명", "css속성값"); // css 속성값 설정하기
+    //   $(css선택자).css({"css속성명1": "css속성값1", "css속성명2": "css속성값2", ... }); // 여러개의 css 속성값 설정하기
+      //   var 변수명 = $(css선택자).css("css속성명"); // 현재 설정된 css 속성값 가져오기
+      $("#btnGetCss").on("click", function() {
+        var attr = $(".getCss p").css("background-color");
+        alert("Background Color : " + attr);
+      });
+
+      $("#btnSetCss01").on("click", function() {
+        $(".setCss p").css("background-color", "yellow");
+      });
+
+      $("#btnSetCss02").on("click", function() {
+        $(".setCss p").css({
+          "background-color": "lightblue",
+          "font-size": "32px",
+          "font-weight": "bold"
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div id="div01">
+    <h3>addClass() 로 css 클래스 추가하기</h3>
+
+    <div>
+      <button type="button" class="btn btn-primary" id="btnAddClass01">클릭 시 addClass() 사용</button>
+      <button type="button" class="btn btn-primary" id="btnAddClass02">클래스 여러개 추가 사용</button>
+      <hr>
+      <h1>제목1</h1>
+      <h2>제목2</h2>
+      <p>addClass()를 사용해 봅시다.</p>
+      <p>addClass()로 글자색상 변경</p>
+      <div class="divAdd">이 부분은 important 클래스 추가함</div>
+      <div class="divAdd2">이 부분은 동시에 여러개의 class 속성이 추가되는 곳</div>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div id="div02">
+    <h3>removeClass() 로 기존의 class 삭제하기</h3>
+
+    <div>
+      <button type="button" class="btn btn-primary" id="btnRemoveClass">클릭 시 기존의 css 클래스 삭제</button>
+      <hr>
+      <h1 class="blue">class에 blue 가 추가되어 있는 제목1</h1>
+      <h2 class="blue">class에 blue 가 추가되어 있는 제목2</h2>
+      <p class="blue">class에 blue가 추가되어 있는 p 태그</p>
+      <p>class에 아무것도 없는 p 태그</p>
+    </div>
+  </div>
+
+  <div id="div03">
+    <h3>toggleClass() 로 css 클래스 적용/미적용</h3>
+
+    <div>
+      <button type="button" class="btn btn-primary" id="btnToggleClass">클릭 시 css 적용/미적용</button>
+      <hr>
+      <div>
+        <h1>버튼 클릭 시 css 가 추가되거나 삭제되는 h1 태그</h1>
+        <h2>버튼 클릭 시 css 가 추가되거나 삭제되는 h2 태그</h2>
+        <p>버튼 클릭 시 css 가 추가되거나 삭제되는 p 태그 1</p>
+        <p>버튼 클릭 시 css 가 추가되거나 삭제되는 p 태그 2</p>
+      </div>
+    </div>
+  </div>
+
+  <br><hr><br>
+
+  <div id="div04">
+    <h3>css() 를 사용하여 css 속성 설정 및 가져오기</h3>
+
+    <div class="mt-3">
+      <h4>css설정 값 가져오기</h4>
+
+      <div class="getCss">
+        <button type="button" class="btn btn-primary" id="btnGetCss">CSS 설정값 가져오기</button>
+        <hr>
+        <p style="background-color: #FF0000">배경 색상이 빨강인 p 태그</p>
+        <p style="background-color: #00FF00">배경 색상이 녹색인 p 태그</p>
+        <p style="background-color: #0000FF">배경 색상이 파랑인 p 태그</p>
+      </div>
+    </div>
+    <hr>
+    <div class="mt-3">
+      <h4>css()로 css 속성값 설정하기</h4>
+
+      <div class="setCss">
+        <button type="button" class="btn btn-primary" id="btnSetCss01">Css속성값 1개 설정하기</button>
+        <button type="button" class="btn btn-primary" id="btnSetCss02">Css속성값 여러개 설정하기</button>
+        <hr>
+        <p style="background-color: #FF0000">배경 색상이 빨강인 p 태그</p>
+        <p style="background-color: #00FF00">배경 색상이 녹색인 p 태그</p>
+        <p style="background-color: #0000FF">배경 색상이 파랑인 p 태그</p>
+        <p>배경 색상이 없는 p 태그</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
